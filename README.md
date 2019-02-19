@@ -1,2 +1,2 @@
-# devtimes
-Devtimes
+# https://devtimes.com
+DEVTIMES

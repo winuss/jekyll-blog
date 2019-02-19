@@ -1,0 +1,406 @@
+---
+---
+{% capture include_to_scssify %}{% include styles/style.scss %}{% endcapture %}{% include header.txt %}{{ include_to_scssify | scssify }}
+
+@media(max-width: 700px) {
+    .markdown-body {
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        color: #333;
+        line-height: 1.6;
+        padding-left: 3%;
+        padding-top: 0%;
+        padding-right: 3%;
+        padding-bottom: 6%;
+        word-wrap: break-word;
+        font-size: 16px;
+    }
+    .only-mobile {
+        display: block;
+        width: 98%;
+        height: 300px;
+    }
+}
+.livereComments{
+    margin-bottom: 0.2rem;
+    padding-bottom: 0.2rem;
+}
+
+.avatar{
+    border: 1px solid #afafaf !important;
+}
+.border1px{
+    border: 1px solid #afafaf !important;
+}
+.markdown-body {
+    word-spacing: 1.8px;
+    letter-spacing: 0.1px;
+}
+
+@media(min-width: 700px) {
+    .only-mobile {
+        display: none;
+    }
+}
+.bottom-ad {
+    text-align: center;
+    width: 100%;
+    height: 300px;
+}
+
+.head-image {
+    max-height: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.head-image img {
+    object-fit: contain;
+}
+
+.markdown-body p {
+    word-break: break-word;
+}
+
+.markdown-body a {
+    background: #FFF9C4;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+    font-family: monospace, monospace;
+    font-size: 1em;
+}
+
+.markdown-body code {
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 12px;
+}
+
+.markdown-body pre {
+    margin-top: 0;
+    margin-bottom: 0;
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body img {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    box-sizing: content-box;
+    background-color: #fff;
+}
+
+.markdown-body code {
+    color: #E53A40;
+    padding: 0;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(0, 0, 0, 0.04);
+    border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+    letter-spacing: -0.2em;
+    content: "\00a0";
+}
+
+.markdown-body pre>code {
+    color: #333;
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    word-break: normal;
+    white-space: pre;
+    background: transparent;
+    border: 0;
+}
+
+.markdown-body .highlight {
+    margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border-radius: 3px;
+    
+}
+
+.markdown-body .highlight pre {
+    margin-bottom: 0;
+    word-break: normal;
+}
+
+.markdown-body pre {
+    word-wrap: normal;
+}
+
+.markdown-body pre code {
+    display: inline;
+    max-width: initial;
+    padding: 0;
+    margin: 0;
+    overflow: initial;
+    line-height: inherit;
+    word-wrap: normal;
+    background-color: transparent;
+    border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+    content: normal;
+}
+
+.markdown-body kbd {
+    display: inline-block;
+    padding: 3px 5px;
+    font-size: 11px;
+    line-height: 10px;
+    color: #555;
+    vertical-align: middle;
+    background-color: #fcfcfc;
+    border: solid 1px #ccc;
+    border-bottom-color: #bbb;
+    border-radius: 3px;
+    box-shadow: inset 0 -1px 0 #bbb;
+}
+
+.markdown-body kbd {
+    display: inline-block;
+    padding: 3px 5px;
+    font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    line-height: 10px;
+    color: #555;
+    vertical-align: middle;
+    background-color: #fcfcfc;
+    border: solid 1px #ccc;
+    border-bottom-color: #bbb;
+    border-radius: 3px;
+    box-shadow: inset 0 -1px 0 #bbb;
+}
+
+.markdown-body ul,
+.markdown-body pre {
+    margin-top: 0;
+    margin-bottom: 18px;
+}
+
+.list-wrapper {
+    display: flex;
+}
+
+.list-body {
+    margin: 4px;
+}
+
+.folder {
+    color: #eee;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    text-align: center;
+    cursor: pointer;
+    right: 0px;
+}
+
+.folder:hover {
+    background: #000;
+    opacity: 0.1;
+}
+
+input[type="checkbox"] {
+    position: absolute;
+    left: -9999px;
+}
+
+input[type="checkbox"]~ul {
+    height: 0;
+    transform: scaleY(0);
+}
+
+input[type="checkbox"]:checked~ul {
+    list-style: none;
+    height: 100%;
+    transform-origin: top;
+    transition: transform .2s ease-out;
+    transform: scaleY(1);
+}
+
+.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+    
+a.sidebar-nav-item{
+    width: 100%;
+}
+a.sidebar-nav-subitem{
+    font-weight: normal;
+    display: block;
+    line-height: 1.75;
+    padding: .25rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+code.highlighter-rouge{
+    padding: 1px 0.5rem;
+    background-color: rgba(0,0,0,0.025);
+    font-size: 0.95rem;
+    color: #ff4d5a;
+    font-family: Nanum Gothic, Noto Sans sans-serif;
+    font-weight: 600;
+}
+.read-more{
+    float: right;
+}
+
+
+h2{
+    border-bottom: 1px solid #000;
+}
+
+/* 가운데 정렬을 위한 클래스들 */
+.content img.center{
+    margin: auto;
+}
+.table-allCenter,
+p.center{
+    text-align: center;
+}
+.table-allCenter img{
+    margin: auto;
+}
+
+
+/* CODE 부분 */
+/* 원본 */
+/* pre, .highlight{
+    width: 100%;
+    margin-left: 0;
+    padding-top: 12px;
+}
+.language-bash:before{
+    content: 'bash';
+    top: 0px;
+    z-index: 9999;
+    position: relative;
+    color: #fff;
+    background: #ff4d5a;
+    padding: 1px 5px 2px 5px;
+    font-size: 0.9em;
+} */
+/* 원본 */
+
+pre, .highlight{
+    width: 100%;
+    margin-left: 0;
+    /* padding-top: 12px; */
+    margin-top: -14px;
+}
+.language-bash:before{
+    content: 'BASH';
+    /* top: 16px; */
+    z-index: 9999;
+    position: relative;
+    color: #fff;
+    background: #03a9f4;
+    padding: 1px 5px 1px 5px;
+
+    font-size: 0.65rem;
+    font-weight: 600;
+}
+.language-html:before{
+    content: 'HTML';
+    /* top: 16px; */
+    z-index: 9999;
+    position: relative;
+    color: #fff;
+    background: #03a9f4;
+    padding: 1px 5px 1px 5px;
+    font-size: 0.65rem;
+    font-weight: 600;
+}
+.language-javascript:before{
+    content: 'JAVASCRIPT';
+    /* top: 16px; */
+    z-index: 9999;
+    position: relative;
+    color: #fff;
+    background: #03a9f4;
+    padding: 1px 5px 1px 5px;
+    font-size: 0.65rem;
+    font-weight: 600;
+}
+.language-typescript:before{
+    content: 'TYPESCRIPT';
+    /* top: 16px; */
+    z-index: 9999;
+    position: relative;
+    color: #fff;
+    background: #03a9f4;
+    padding: 1px 5px 1px 5px;
+    font-size: 0.65rem;
+    font-weight: 600;
+}
+.language-csharp:before{
+    content: 'C#';
+    /* top: 16px; */
+    z-index: 9999;
+    position: relative;
+    color: #fff;
+    background: #03a9f4;
+    padding: 1px 5px 1px 5px;
+    font-size: 0.65rem;
+    font-weight: 600;
+}
+
+
+/* 리졸트 부분 JS피들 */
+.result{
+    position: relative;
+}
+.result:before{
+    content: 'Result';
+    left: 0;
+    top: 0;
+    font-size: 30px;
+    background: #ff4d5a;
+    width: 100%;
+    height: 57px;
+    position: absolute;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-left: 15px;
+    font-family: Nanum Gothic, Noto Sans sans-serif;
+}
+#iframe{
+    border: 1px solid #ff4d5a;
+    padding: 5px;
+}
+.center>p{
+    text-align: center;
+}
