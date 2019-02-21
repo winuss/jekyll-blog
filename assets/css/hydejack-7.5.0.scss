@@ -317,13 +317,13 @@ p.center{
 pre, .highlight{
     width: 100%;
     margin-left: 0;
-    /* padding-top: 12px; */
-    margin-top: -14px;
+    padding-top: 10px;
+    // margin-top: -14px;
 }
 
 @mixin languages($content-text, $color){
     content: $content-text;
-    /* top: 16px; */
+    top: 14px;
     z-index: 9999;
     position: relative;
     color: #fff;
