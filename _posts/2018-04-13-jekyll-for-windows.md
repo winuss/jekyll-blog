@@ -22,29 +22,35 @@ CMD > Bash - WSL 진입
 {:toc}
 **1.패키지 업데이트**
 ~~~bash
-sudo apt-get update -y && sudo apt-get upgrade -y
+$ sudo apt-get update -y && sudo apt-get upgrade -y
 ~~~
 
-**2.ruby 저장소 등록**
+**2.ruby 설치**
 ~~~bash
-sudo apt-add-repository ppa:brightbox/ruby-ng
-sudo apt-get update
-#sudo apt-get install ruby2.5 ruby2.5-dev build-essential dh-autoreconf
-sudo apt-get install ruby-full build-essential zlib1g-dev
+$ sudo apt-get install make build-essential
+$ sudo apt-get install ruby ruby-dev
 ~~~
->루비를 설치하기 위해 루비 최적화 버전을 호스팅하는 BrightBox의 저장소를 사용.
 
-**3.Ruby gems 업데이트**
+설치과 완료되는 환경변수에 등록해주자.
+
+**환경변수 등록**
 ~~~bash
-sudo gem update
+$ echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
+$ echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
+$ echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
+$ source ~/.bashrc
 ~~~
 
-**4.지킬 설치**
+**3.지킬 설치**
 ~~~bash
-sudo gem install jekyll bundler
+$ gem update
+$ gem install bundler
+$ gem install jekyll
+
+$ gem install rake && bundle install
 ~~~
 
-**5.지킬 버전확인**
+**4.지킬 버전확인**
 ~~~bash
 jekyll -v
 ~~~
@@ -53,13 +59,12 @@ jekyll -v
 {:toc}
 ~~~bash
 mkdir new myblog
-cd new myblog
-jekyll serve
+cd myblog
 ~~~
 
 **사이트를 빌드하고 로컬 서버에서 사용할 수 있도록 한다.**
 ~~~bash
-bundle exec jekyll serve
+jekyll serve
 ~~~
 
 **NOTE**: http://127.0.0.1:4000 에 접속하면 서버가 생성 되었다. 접속 GO!
