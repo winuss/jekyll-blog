@@ -29,7 +29,8 @@ sudo apt-get update -y && sudo apt-get upgrade -y
 ~~~bash
 sudo apt-add-repository ppa:brightbox/ruby-ng
 sudo apt-get update
-sudo apt-get install ruby2.5 ruby2.5-dev build-essential dh-autoreconf
+#sudo apt-get install ruby2.5 ruby2.5-dev build-essential dh-autoreconf
+sudo apt-get install ruby-full build-essential zlib1g-dev
 ~~~
 >루비를 설치하기 위해 루비 최적화 버전을 호스팅하는 BrightBox의 저장소를 사용.
 
