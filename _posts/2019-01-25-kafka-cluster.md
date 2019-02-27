@@ -22,13 +22,13 @@ Kafka를 설치하고 간단하게 클러스터 환경을 구성하여 Producer 
 
 다운로드(각 버전에 대해서는 https://kafka.apache.org/downloads를 참고하자.)
 
-```
+```bash
 $ wget http://apache.mirror.cdnetworks.com/kafka/2.1.0/kafka_2.11-2.1.0.tgz
 ```
 
 압축해제 및 경로이동
 
-```
+```bash
 $ tar -zxvf kafka_2.11-2.1.0.tgz
 $ cd kafka_2.11-2.1.0
 ```
@@ -41,11 +41,11 @@ Kafka의 동작은 Zookeeper에 의해 관리가 되기 때문에 Zookeeper 없�
 
 각 인스턴스에 설치된 Kafka의 config/zookeeper.properties 파일은 하나의 Zookeeper를 실행하는데 쓰이는 설정 파일이다. 이 말은 zookeeper1.properties, zookeeper2.properties, zookeeper3.properties 이런식으로 여러개의 설정파일을 만들고 하나의 장비에서 다중으로 실행할 수 있다는 의미이다. 설정파일을 다음과 같이 3대의 서버에 동일하게 추가하자.
 
-```
+```bash
 $ vi config/zookeeper.properties
 ```
 
-```
+```bash
 # the directory where the snapshot is stored.
 dataDir=**/tmp/zookeeper**
 
@@ -90,21 +90,21 @@ server.3=192.168.137.103:2888:3888
 
 **1 서버 (192.168.137.101)**
 
-```
+```bash
 $ mkdir /tmp/zookeeper
 $ echo 1 > /tmp/zookeeper/myid
 ```
 
 **2 서버 (192.168.137.102)**
 
-```
+```bash
 $ mkdir /tmp/zookeeper
 $ echo 2 > /tmp/zookeeper/myid
 ```
 
 **3 서버 (192.168.137.103)**
 
-```
+```bash
 $ mkdir /tmp/zookeeper
 $ echo 3 > /tmp/zookeeper/myid
 ```
@@ -119,13 +119,13 @@ Kafka의 config/server.properties 파일은 하나의 Kafka를 실행하는데 �
 
 설정파일 config/server.properties에 3대 서버 각 환경에 맞는 정보를 입력해 준다.
 
-```
+```bash
 $ vi config/server.properties
 ```
 
 **1 서버 (192.168.137.101)**
 
-```
+```bash
 broker.id=1
 listeners=PLAINTEXT://:9092
 advertised.listeners=PLAINTEXT://**192.168.137.101**:9092
@@ -134,7 +134,7 @@ zookeeper.connect=192.168.137.101:2181, 192.168.137.102:2181, 192.168.137.103:21
 
 **2 서버 (192.168.137.102)**
 
-```
+```bash
 broker.id=2
 listeners=PLAINTEXT://:9092
 
@@ -143,7 +143,7 @@ zookeeper.connect=192.168.137.101:2181, 192.168.137.102:2181, 192.168.137.103:21
 ```
 
 **3 서버 (192.168.137.103)**
-```
+```bash
 broker.id=3
 
 listeners=PLAINTEXT://:9092
@@ -167,7 +167,7 @@ Kafka를 구동하기 위한 설정은 끝났다. 클러스터 구성을 위한 
 #### Zookeeper 및 Kafka 서버 구동
 
 Kafka를 구동하기 위해 먼저 Zookeeper를 구동 한다음 이후 Kafka를 구동해야 한다.
-```
+```bash
 $ bin/zookeeper-server-start.sh config/zookeeper.properties
 $ bin/kafka-server-start.sh config/server.properties
 ```
@@ -189,7 +189,7 @@ Kafka에서는 bin폴더 아래 제공되는 스크립트 파일을 이용해 To
 
 GameLog, GameLog2, GameLog3 세개의 Topic을 생성해보자.(replication-factor:3, partitions : 1)
 
-```
+```bash
 $ bin/kafka-topics.sh --create --zookeeper 192.168.137.101:2181, 192.168.137.102:2181, 192.168.137.103:2181 --replication-factor 3 --partitions 1 --topic GameLog
 $ bin/kafka-topics.sh --create --zookeeper 192.168.137.101:2181, 192.168.137.102:2181, 192.168.137.103:2181 --replication-factor 3 --partitions 1 --topic GameLog2
 $ bin/kafka-topics.sh --create --zookeeper 192.168.137.101:2181, 192.168.137.102:2181, 192.168.137.103:2181 --replication-factor 3 --partitions 1 --topic GameLog3
@@ -199,7 +199,7 @@ $ bin/kafka-topics.sh --create --zookeeper 192.168.137.101:2181, 192.168.137.102
 
 **2. Topic 리스트 확인**
 
-```
+```bash
 $ bin/kafka-topics.sh --list --zookeeper 192.168.137.101:2181, 192.168.137.102:2181, 192.168.0.103:2181
 ```
 
@@ -207,7 +207,7 @@ $ bin/kafka-topics.sh --list --zookeeper 192.168.137.101:2181, 192.168.137.102:2
 
 **3. Topic 삭제**
 
-```
+```bash
 $ bin/kafka-topics.sh --delete --zookeeper 192.168.137.101:2181, 192.168.137.102:2181, 192.168.137.103:2181 --topic GameLog3
 ```
 
@@ -215,7 +215,7 @@ $ bin/kafka-topics.sh --delete --zookeeper 192.168.137.101:2181, 192.168.137.102
 
 **4. Topic 상세 정보 확인**
 
-```
+```bash
 $ bin/kafka-topics.sh --describe --zookeeper 192.168.137.101:2181, 192.168.137.102:2181, 192.168.137.103:2181
 ```
 
@@ -229,7 +229,7 @@ $ bin/kafka-topics.sh --describe --zookeeper 192.168.137.101:2181, 192.168.137.1
 
 **1.Producer 메시지 생산하기**
 
-```
+```bash
 $ bin/kafka-console-producer.sh --broker-list 192.168.137.101:9092,192.168.137.102:9092,192.168.137.103:9092 --topic GameLog
 ```
 
@@ -239,7 +239,7 @@ $ bin/kafka-console-producer.sh --broker-list 192.168.137.101:9092,192.168.137.1
 
 **2.Consumer 메시지 소비하기**
 
-```
+```bash
 $ bin/kafka-console-consumer.sh --bootstrap-server 192.168.137.101:9092,192.168.137.102:9092,192.168.137.103:9092 --topic GameLog --from-beginning
 ```
 
