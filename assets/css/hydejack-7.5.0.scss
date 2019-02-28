@@ -331,13 +331,13 @@ pre, .highlight{
     // top: 8px;
     z-index: 9999;
     position: absolute;
-    right: 17px;
-    color: #fff;
+    right: 15px;
+    border-radius: 0 4px 0 4px;
+    color: #f8f8f8; //#fff
     background: $color;
     padding: 0px 5px 0px 5px;
     font-size: 0.65rem;
     font-weight: 600;
-    border-radius: 0 4px 0 4px;
 }
 
 .language-bash:before{
