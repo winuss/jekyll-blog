@@ -1,4 +1,5 @@
-<!-- <span class="sr-only">{{ site.data.strings.navigation | default:"Navigation" }}{{ site.data.strings.colon | default:":" }}</span>
+<!--
+  <span class="sr-only">{{ site.data.strings.navigation | default:"Navigation" }}{{ site.data.strings.colon | default:":" }}</span>
 <ul>
   {% assign pages = site.pages | where: "menu", true %}
   {% assign documents = site.documents | where: "menu", true %}
@@ -21,7 +22,8 @@
       </li>
     {% endunless %}
   {% endfor %}
-</ul> -->
+</ul>
+-->
 
 <span class="sr-only">Navigation:</span>
 <ul>
@@ -38,7 +40,7 @@
   {% assign count = count | plus: 1 %}
     <li>
       <input type="checkbox" id="list-item-{{ count }}"/>
-      <div  class="list-wrapper">
+      <div class="list-wrapper">
       <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url | relative_url }}">{{ node.title }}</a>
        {% if node.submenu %}<label class="folder" for="list-item-{{ count }}">▾</label>{% endif %}
     </div>
