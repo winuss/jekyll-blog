@@ -72,7 +72,7 @@ paginate_path:         /page-:num/
 # ========================================================================================
 
 # Sidebar image and theme color of the site.
-accent_image:          /assets/img/sidebar-bg.jpg
+accent_image:          /assets/img/cover/side-cover-03.jpg
   # background: '#ff4d5a' # provide a valid CSS background value
   # overlay:    false     # set to true if you want a dark overlay
 accent_color:          '#4fb1ba' # a43838
