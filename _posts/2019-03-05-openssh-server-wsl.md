@@ -6,7 +6,7 @@ categories: [dev]
 tags: [tip]
 date: 2019-03-05
 ---
-<!-- ![headerimg](/assets/img/subcate/jekyll-head.png) -->
+![headerimg](/assets/img/post/openssh-server-wsl/linux-ubuntu-windows-10.jpg)
 WSL(Windows Subsystem for Linux)에서 OpenSSH Server를 띄우고 접속하는 방법에 대해 알아보겠다.
 
 # sshd_config
@@ -18,7 +18,7 @@ WSL(Windows Subsystem for Linux)에서 OpenSSH Server를 띄우고 접속하는 
 ~~~bash
 $ sudo vi /etc/ssh/sshd_config
 ~~~
-> `Port 8889` # ssh 접속 포트를 기입한다. 22는 윈도우 자체 내장 SSH서버가 이번호를 선점하고 있기 때문에 반드시 피해야 한다
+> `Port 8889` # ssh 접속 포트를 기입한다. 22는 윈도우 자체 내장 SSH서버가 이번호를 선점하고 있기 때문에 반드시 피해야 한다.
 
 > `UsePrivilegeSeparation no `# SWL이 chroot()를 지원하지 않기 때문이라고 하는데 이 부분은 패스 했다. (안해도 되는듯..)
 
