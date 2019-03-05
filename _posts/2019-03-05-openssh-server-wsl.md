@@ -61,4 +61,4 @@ $ ssh-copy-id -i ~/.ssh/id_rsa.pub [user]@[host] -p 8889
 >Now try logging into the machine, with:   "ssh '[user]@[host]'"<br>
 >and check to make sure that only the key(s) you wanted were added.
 
-복사가 정상적으로 이루어 졌다면 해당 서버의 `PasswordAuthentication`를 `yes`로 다시 변경하자.
+복사가 정상적으로 이루어 졌다면 해당 서버의 `PasswordAuthentication`를 `no`로 다시 변경하자.(구지 다시 no로 변경할 필요는 없다. key기반의 접속이기때문에 자동으로 패스워드를 확인하는 절차는 패스되는 것 같다.)
