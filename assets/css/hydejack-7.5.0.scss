@@ -360,6 +360,10 @@ pre, .highlight{
     @include languages('C#', #03a9f4);
 }
 
+.language-python:before{
+    @include languages('PYTHON', #dc7a03);
+}
+
 /* 리졸트 부분 JS피들 */
 .result{
     position: relative;
