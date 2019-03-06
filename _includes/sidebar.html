@@ -30,17 +30,20 @@
           <input type="text" name="q" id="tipue_search_input" placeholder="&#xF002;  Search" pattern=".{2,}" title="최소 2글자 이상" required></div>
         <div style="clear: both;"></div>
       </form> -->
+
+      <!-- search box 7.0 -->
       <p>
-        <!-- search box 7.0 -->
         <form action="/search">
           <div class="tipue_search_group">
-            <input type="text" name="q" id="tipue_search_input" pattern=".{3,}" title="At least 3 characters" required>
-            <button type="submit" class="tipue_search_button">
-              <div class="tipue_search_icon">&#9906;</div>
-            </button>
+            <input type="text" name="q" id="tipue_search_input" placeholder="&#9906; Search" pattern=".{3,}" title="At least 3 characters" required>
+            <!-- <button type="submit" class="tipue_search_button"> -->
+              <!-- <div class="tipue_search_icon">&#9906;</div> -->
+            <!-- </button> -->
           </div>
+          <div style="clear: both;"></div>
         </form>
       </p>
+
 
       {% assign author = site.data.authors.first[1] | default:site.author %}
 
