@@ -324,6 +324,7 @@ pre, .highlight{
     box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
     // background-color: #1d1e31;
     color:#f8f8f8;
+    margin-bottom: 15px;
 }
 
 @mixin languages($content-text, $color){
@@ -390,3 +391,10 @@ pre, .highlight{
 .center>p{
     text-align: center;
 }
+
+
+// markdown table style
+table {
+    margin-left: 0px !important;
+    margin-bottom: 0px !important;
+  }
