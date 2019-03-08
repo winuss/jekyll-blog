@@ -119,9 +119,12 @@ abbr {
 
 blockquote {
   padding: .5rem 1rem;
-  margin: .8rem 0;
+  margin: 1.2rem 0;
   color: $gray;
   border-left: .25rem solid $border-color;
+  // margin: 16px 0;
+  // margin-top: 1.5rem;
+  // margin-bottom: 1.5rem;
 
   &.lead {
     margin-top: 1.5rem;
