@@ -22,9 +22,9 @@ $gray: #888;
 $gray-bg: rgba(0,0,0,.025);
 $gray-text: #666;
 
-$root-font-size: 14px;
-$root-font-size-medium: 15px;
-$root-font-size-large: 16px;
+$root-font-size: 15px;
+$root-font-size-medium: 16px;
+$root-font-size-large: 18px;
 $root-font-size-print: 9pt;
 $root-line-height: 1.75;
 
@@ -48,3 +48,5 @@ $break-point-4: 72em;
 $break-point-5: 90em;
 $break-point-dynamic: 98.5em;
 $break-point-font-large: 125em;
+
+$dynamic-width: calc(50% - 28rem);
