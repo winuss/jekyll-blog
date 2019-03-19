@@ -36,7 +36,7 @@ date: 2019-03-20
 
 BeautifulSoup에는 기본적으로 파이썬 표준 라이브러리인 html파서를 지원하지만, lxml을 사용하면 성능 향상이 있다.
 
-BeautifulSoup(markup, `'[파서명]'`)
+**BeautifulSoup(markup, `'[파서명]'`)**
 
 - html.parser : 빠르지만 유연하지 않기 때문에 단순한 html문서에 사용
 - lxml : 매우 빠르고 유연
