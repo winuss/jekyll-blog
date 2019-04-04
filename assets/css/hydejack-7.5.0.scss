@@ -376,6 +376,17 @@ p.center{
 //     @include languages('PYTHON', #dc7a03);
 // }
 
+// pre > .language-result {
+//     font-family: Noto Sans;
+// }
+
+//result
+pre,.language-result {
+    font-family: Noto Sans;
+    margin-top:-1rem;
+    background-color: #eeeeee;
+}
+
 /* 리졸트 부분 JS피들 */
 .result{
     position: relative;
@@ -402,7 +413,6 @@ p.center{
 .center>p{
     text-align: center;
 }
-
 
 // markdown table style
 table {
