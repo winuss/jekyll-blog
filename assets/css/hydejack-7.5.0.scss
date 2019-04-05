@@ -384,7 +384,7 @@ p.center{
 pre,.language-result {
     font-family: Noto Sans;
     margin-top:-1rem;
-    background-color: #eeeeee;
+    background-color: #e6f3f4;
 }
 
 /* 리졸트 부분 JS피들 */
@@ -419,3 +419,10 @@ table {
     margin-left: 0px !important;
     margin-bottom: 0px !important;
   }
+
+  //공식
+.katex-display {
+    width:100%;
+    padding: 1.2rem !important;
+    margin-left: 0px !important;
+}
