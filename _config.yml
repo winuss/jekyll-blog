@@ -75,7 +75,7 @@ paginate_path:         /page-:num/
 accent_image:          /assets/img/cover/side-cover-03.jpg
   # background: '#ff4d5a' # provide a valid CSS background value
   # overlay:    false     # set to true if you want a dark overlay
-accent_color:          '#00b5dc' #'#4fb1ba' # a43838
+accent_color:          '#4fb1ba' # a43838
 
 # The string encoding which fonts to fetch from Google Fonts.
 # See: <https://qwtel.com/hydejack/docs/configuration/>
