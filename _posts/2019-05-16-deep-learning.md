@@ -65,17 +65,17 @@ date: 2019-05-16
 신경망이 깊어질수록 원하는 결과를 얻을 수 없다. 오히려 성능이 저하되는 경우가 발생.
 
 다음의 문제를 해결하는데 10년이 걸리게 된다.
-1.Overfitting (과하거나)
-2.Vanishing Gradient (덜하거나)
-3.Too slow  (느리거나)
+1. Overfitting (과하거나)
+2. Vanishing Gradient (덜하거나)
+3. Too slow  (느리거나)
 
 이런 문제를 해결하기 위해 연구하는 10년 동안 GUP를 활용한 연산시도, 알고리즘의 발전이 있게 된다.(SVM, Random Forest 등장)
 
 `2000 : 3가지 한계점의 해결방안 등장`
 
-1.과한 적합 해결: Droupout
-2.덜한 적합 해결: ReLU(Rectified Linear Unit) - 수렴속도가 시그모이드류 함수 대비 6배 빠름
-3.느린 적합 해결: Adam - 확룰적 경사 하강법(SGD)에서 더 나아가 학습속도와 운동량을 고려한 옵티마이저가 등장
+1. 과한 적합 해결: Droupout
+2. 덜한 적합 해결: ReLU(Rectified Linear Unit) - 수렴속도가 시그모이드류 함수 대비 6배 빠름
+3. 느린 적합 해결: Adam - 확룰적 경사 하강법(SGD)에서 더 나아가 학습속도와 운동량을 고려한 옵티마이저가 등장
 
 `2006 : 드디어 Deep Network. Deep Learning 용어가 사용되기 시작`
 
