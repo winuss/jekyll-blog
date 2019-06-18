@@ -385,8 +385,9 @@ pre,.language-result {
     font-family: Noto Sans;
     margin-top:-1rem;
     // background-color: #e6f3f4;
-    background-color: #fddcae;
+    background-color: #f9f9f9;
     // color: #fff;
+    font-size:0.9em;
 }
 
 /* 리졸트 부분 JS피들 */
@@ -427,4 +428,17 @@ table {
     width:100%;
     padding: 1.2rem !important;
     margin-left: 0px !important;
+}
+
+table.dataframe {
+    color:#363844;
+    font-size: 0.8em;
+    // background-color: #f9deae;
+    background-color: #f9f9f9;
+    border: 0;
+    margin-top:-1rem;
+    // margin-top: -14px;
+    margin-bottom: 10px !important;
+
+    // font-family: Noto Sans;
 }
