@@ -6,7 +6,8 @@ categories: [bigdata]
 tags: [ml]
 date: 2019-06-18
 ---
-### 영어 데이터
+
+### 텍스트 분류
 
 캐글(Kaggle)의 "Bag of Words with bag of popcorns"
 
