@@ -1,18 +1,16 @@
 ---
 layout: post
 comments: true
-title: '[주피터] 테스트'
+title: '[NLP] 텍스트 분류 (실습)'
 categories: [bigdata]
 tags: [ml]
-date: 2019-05-17
+date: 2019-06-18
 ---
-# 텍스트 분류
-
-**영어 데이터**
+### 영어 데이터
 
 캐글(Kaggle)의 "Bag of Words with bag of popcorns"
 
-**워드팝콘 데이터의 처리 과정**
+### 워드팝콘 데이터의 처리 과정
 
 > 케글 데이터 불러오기 -> EDA -> 데이터정제 -> 모델링
 
