@@ -7,8 +7,6 @@ tags: [ml]
 date: 2019-06-18
 ---
 
-### 텍스트 분류
-
 캐글(Kaggle)의 "Bag of Words with bag of popcorns"
 
 ### 워드팝콘 데이터의 처리 과정
