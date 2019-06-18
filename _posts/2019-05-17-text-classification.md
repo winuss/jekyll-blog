@@ -49,7 +49,6 @@ file_list_tsv = ['labeledTrainData.tsv', 'unlabeledTrainData.tsv', 'testData.tsv
     nsmc_train_label.npy	  test_clean.csv
 
 
-
 ```python
 # file_list의 zip 압축파일을 풀어준다.
 for file in file_list:
