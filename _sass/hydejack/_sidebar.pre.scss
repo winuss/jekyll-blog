@@ -112,7 +112,8 @@ hy-drawer {
   // <<<<< INLINE
   position: relative;
   z-index: 3;
-
+  font-size: $root-font-size-large;
+  
   @media screen {
     position: absolute;
     right: 1.5rem;
