@@ -430,3 +430,248 @@ print('숫자가있는 질문: {:.2f}%'.format(numbers * 100))
 
 
 결과를 보면 대부분 마침표를 포함하고 있고, 대문자도 대부분 사용하고 있다. 따라서 전처리 과정에서 대문자의 경우 모두 소문자로 바꾸고 특수 문자의 경우 제거해야 한다. 이 과정은 학습에 방해가 되는 요소들을 제거하기 위함이다.
+
+## 데이터 전처리
+
+
+```python
+import re
+import pandas
+import numpy
+import json
+from bs4 import BeautifulSoup
+from nltk.corpus import stopwords
+from tensorflow.python.keras.preprocessing.sequence import pad_sequences
+from tensorflow.python.keras.preprocessing.text import Tokenizer
+```
+
+어떤 방향으로 전처리해야 할지 결정하기 위해 데이터 하나를 자세히 보자.
+
+
+```python
+DATA_IN_PATH = './data_in/'
+
+train_data = pd.read_csv(DATA_IN_PATH + 'labeledTrainData.tsv', header = 0, delimiter = '\t', quoting = 3)
+print(train_data['review'][0])
+```
+
+    "With all this stuff going down at the moment with MJ...bad m'kay.<br /><br />...I hope he is not the latter."
+
+
+우선 `<br/>`과 같은 HTML 태그와 `\`,`...` 같은 특수문자가 포함되어 있는것을 확인할 수 있는데, 이는 일반적으로 문장의 의미에 크게 영향을 주지 않기 때문에 **BeautifulSoup**과 **re.sub**을 이용해 제거하자.
+
+
+```python
+review = train_data['review'][0] # 리뷰들중 하나.
+review_text = BeautifulSoup(review, "html5lib").get_text() # HTML 태그 제거
+review_text = re.sub("[^a-zA-Z]", " ", review_text) # 영어 문자를 제외한 나머지는 모두 공백으로 변경
+print(review_text)
+```
+
+     With all this stuff going ... I hope he is not the latter  
+
+
+
+```python
+stop_words = set(stopwords.words('english')) # 영어 불용어들의 set을 만듬
+
+review_text = review_text.lower() # 소문자변환 (NLTK에서 제공하는 불용어 사전은 모두 소문자로 되어있다.)
+words = review_text.split() # 단어리스트로 변환
+words = [w for w in words if not w in stop_words] # 불용어를 제거한 리스트를 만듬
+print(words)
+```
+
+    ['stuff', 'going', 'moment', 'mj', 'started', 'listening',,,'hope', 'latter']
+
+
+
+```python
+clean_review = ' '.join(words) # 단어 리스트들을 다시 하나의 문장으로 합친다.
+print(clean_review)
+```
+
+    stuff going moment mj started listening ... iars hope latter
+
+
+전체 데이터에 적용하기 위해 함수화 하자.
+
+
+```python
+def preprocessing(review, remove_stopwords=False):
+    # 불용어 제거는 선택 가능하도록(경우에 따라 불용어 제거가 역호과를 가져올 수 있다.)
+    
+    # 1. HTML 태그 제거
+    review_text = BeautifulSoup(review, "html5lib").get_text()
+
+    # 2. 영어가 아닌 특수문자들을 공백(" ")으로 바꾸기
+    review_text = re.sub("[^a-zA-Z]", " ", review_text)
+
+    # 3. 대문자들을 소문자로 바꾸고 공백단위로 텍스트들 나눠서 리스트로 만든다.
+    words = review_text.lower().split()
+
+    if remove_stopwords: 
+        # 4. 불용어들을 제거
+    
+        #영어에 관련된 불용어 불러오기
+        stops = set(stopwords.words("english"))
+        # 불용어가 아닌 단어들로 이루어진 새로운 리스트 생성
+        words = [w for w in words if not w in stops]
+        # 5. 단어 리스트를 공백을 넣어서 하나의 글로 합친다.
+        clean_review = ' '.join(words)
+
+    else: # 불용어 제거하지 않을 때
+        clean_review = ' '.join(words)
+
+    return clean_review
+```
+
+
+```python
+clean_train_reviews = []
+for review in train_data['review']:
+    clean_train_reviews.append(preprocessing(review, remove_stopwords=True))
+
+# 전처리된 데이터 확인
+clean_train_reviews[0]
+```
+
+
+
+
+    'stuff going moment mj started listening ... sickest liars hope latter'
+
+
+
+
+```python
+clean_train_df = pd.DataFrame({'review': clean_train_reviews, 'sentiment': train_data['sentiment']})
+```
+
+
+```python
+tokenizer = Tokenizer()
+tokenizer.fit_on_texts(clean_train_reviews)
+text_sequences = tokenizer.texts_to_sequences(clean_train_reviews)
+```
+
+위와 같이 하면 각 리뷰가 텍스트가 아닌 인덱스의 벡터로 구성될 것이다.
+
+
+```python
+print(text_sequences[0])
+```
+
+    [404, 70, 419, 8815, 506, 2456, 115, 54, 873, ,,, ,18688, 18689, 316, 1356]
+
+
+전체 데이터가 인덱스로 구성됨에 따라 각 인덱스가 어떤 단어를 의미하는지 확인할 수 있어야 하기 때문에 단어 사전이 필요하다.
+
+
+```python
+word_vocab = tokenizer.word_index
+print(str(word_vocab)[:100], "...")
+print("전체 단어 개수 : ", len(word_vocab) + 1)
+```
+
+    {'movie': 1, 'film': 2, 'one': 3, 'like': 4, 'good': 5, 'time': 6, 'even': 7, 'would': 8, 'story': 9 ...
+    전체 단어 개수 :  74066
+
+
+ 총 74,000개 정도의 단어 이다. 단어 사전뿐 아니라 전체 단어의 개수도 이후 모델에서 사용되기 때문에 저장해 둔다.
+
+
+
+```python
+data_configs = {}
+
+data_configs['vocab'] = word_vocab
+data_configs['vocab_size'] = len(word_vocab) + 1
+```
+
+
+```python
+MAX_SEQUENCE_LENGTH = 174  # 문장 최대 길이
+
+train_inputs = pad_sequences(text_sequences, maxlen=MAX_SEQUENCE_LENGTH, padding='post')
+
+print('Shape of train data: ', train_inputs.shape)
+```
+
+    Shape of train data:  (25000, 174)
+
+
+패딩 처리를 위해 `pad_sequences`함수를 사용하였다. 최대 길이를 174로 설정한 것은 앞서 단어 개수의 통계를 계산했을 때 나왔던 중간값이다.
+보통 평균이 아닌 중간값을 사용하는 경우가 많은데, 일부 이상치 데이터로 인해 평균값이 왜곡될 우려가 있기때문이다.
+
+패딩 처리를 통해 데이터의 형태가 25,000개의 데이터가 174라는 길이를 동일하게 가지게 되었다.
+
+
+```python
+train_labels = np.array(train_data['sentiment'])
+print('Shape of label tensor:', train_labels.shape)
+```
+
+    Shape of label tensor: (25000,)
+
+
+numpy 배열로 만든 후 라벨의 형태를 확인해 보면 길이가 25,000인 벡터임을 확인할 수 있다.
+이렇게 라벨까지 numpy 배열로 저장하면 모든 전처리 과정이 끝난다.
+
+원본 데이터를 벡터화하는 과정을 그림을 통해 이해해 보자.
+![oorigin-vector](/assets/img/post/nlp-text-classification/oorigin-vector.png) 
+
+
+이제 전처리한 데이터를 이후 모델링 과정에서 사용하기 위해 저장을 하도록 하자.
+
+```python
+TRAIN_INPUT_DATA = 'train_input.npy'
+TRAIN_LABEL_DATA = 'train_label.npy'
+TRAIN_CLEAN_DATA = 'train_clean.csv'
+DATA_CONFIGS = 'data_configs.json'
+
+import os
+# 저장하는 디렉토리가 존재하지 않으면 생성
+if not os.path.exists(DATA_IN_PATH):
+    os.makedirs(DATA_IN_PATH)
+    
+
+# 전처리 된 데이터를 넘파이 형태로 저장
+np.save(open(DATA_IN_PATH + TRAIN_INPUT_DATA, 'wb'), train_inputs)
+np.save(open(DATA_IN_PATH + TRAIN_LABEL_DATA, 'wb'), train_labels)
+
+# 정제된 텍스트를 csv 형태로 저장
+clean_train_df.to_csv(DATA_IN_PATH + TRAIN_CLEAN_DATA, index = False)
+
+
+# 데이터 사전을 json 형태로 저장
+json.dump(data_configs, open(DATA_IN_PATH + DATA_CONFIGS, 'w'), ensure_ascii=False)
+```
+
+test 데이터도 동일하게 저장하자. 다만 test 데이터는 라벨 값이 없기 때문에 라벨은 따로 저장하지 않아도 된다. 추가로 test 데이터네 대해 저장해야 하는 값이 있는데 각 리뷰 데이터에 대해 리뷰에 대한 `id`값을 저장해야 한다.
+
+
+```python
+test_data = pd.read_csv(DATA_IN_PATH + "testData.tsv", header=0, delimiter="\t", quoting=3)
+
+clean_test_reviews = []
+for review in test_data['review']:
+    clean_test_reviews.append(preprocessing(review, remove_stopwords = True))
+
+
+clean_test_df = pd.DataFrame({'review': clean_test_reviews, 'id': test_data['id']})
+test_id = np.array(test_data['id'])
+
+text_sequences = tokenizer.texts_to_sequences(clean_test_reviews)
+test_inputs = pad_sequences(text_sequences, maxlen=MAX_SEQUENCE_LENGTH, padding='post')
+
+
+TEST_INPUT_DATA = 'test_input.npy'
+TEST_CLEAN_DATA = 'test_clean.csv'
+TEST_ID_DATA = 'test_id.npy'
+
+np.save(open(DATA_IN_PATH + TEST_INPUT_DATA, 'wb'), test_inputs)
+np.save(open(DATA_IN_PATH + TEST_ID_DATA, 'wb'), test_id)
+clean_test_df.to_csv(DATA_IN_PATH + TEST_CLEAN_DATA, index = False)
+```
+
+test 데이터를 전처리할 떄 한 가지 중요한 점은 토크나이저를 통해 인덱스 벡터로 만들 때 토크나이징 객체로 새롭게 만드는 것이 아니라, 기존에 학습 데이터에 적용한 토크나이저 객체를 사용해야 한다는 것이다. 만약 새롭게 만들 경우 Train 데이터와 Test 데이터에 대한 각 단어들의 인덱스가 달라져서 모델에 정상적으로 적용할 수 없기 때문이다.
