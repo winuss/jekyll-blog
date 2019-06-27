@@ -375,6 +375,8 @@ table {
 }
 
 table.dataframe {
+    width:100%; //데이터테이블 결과 배경을 우측끝까지 늘리려면 주석처리
+
     color:#363844;
     font-size: 0.8em;
     // background-color: #f9deae;
@@ -387,9 +389,9 @@ table.dataframe {
     // font-family: Noto Sans;
 }
 
+// 포스트내 최대 이미지 제한
 .post {
     > p > img {
-        // width: auto;
         max-width: 800px;
     }
 }
