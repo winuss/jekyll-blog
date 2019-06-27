@@ -38,28 +38,27 @@
 
   @media screen {
     padding-left: 1.5rem;
-    max-width: 48rem;
+    // max-width: 38rem;
+    // width: 90%;
     min-height: 100vh;
   }
 
   @media screen and (min-width: $break-point-2) {
-    //  max-width: 42rem;
-    width: auto;
+    // max-width: 42rem;
   }
 
   @media screen and (min-width: $break-point-3) {
     margin-left: 22rem;
-    margin-right: 1rem;
+    margin-right: 4rem;
     padding-left: 1rem;
   }
 
   @media screen and (min-width: $break-point-5) {
     // max-width: 48rem;
-    width: auto;
   }
 
   @media screen and (min-width: $break-point-dynamic) {
-    margin: auto;
+    // margin: auto;
   }
 }
 
