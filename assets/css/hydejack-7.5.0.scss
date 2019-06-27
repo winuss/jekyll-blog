@@ -299,6 +299,8 @@ $output-border-color: #e4e4e4;
 
 //result
 pre {
+    width: 100%; //코드테이블 우측 끝까지 늘이려면 주석처리
+
     margin-top:-1rem;
     background-color: $output-bg-color;
     border: 1px solid $output-border-color;
@@ -383,4 +385,11 @@ table.dataframe {
     margin-bottom: 10px !important;
 
     // font-family: Noto Sans;
+}
+
+.post {
+    > p > img {
+        // width: auto;
+        max-width: 800px;
+    }
 }

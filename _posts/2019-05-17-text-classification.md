@@ -618,7 +618,7 @@ numpy 배열로 만든 후 라벨의 형태를 확인해 보면 길이가 25,000
 이렇게 라벨까지 numpy 배열로 저장하면 모든 전처리 과정이 끝난다.
 
 원본 데이터를 벡터화하는 과정을 그림을 통해 이해해 보자.
-![oorigin-vector](/assets/img/post/nlp-text-classification/oorigin-vector.png) 
+![oorigin-vector](/assets/img/post/nlp-text-classification/oorigin-vector.png){: width="600px" }
 
 
 이제 전처리한 데이터를 이후 모델링 과정에서 사용하기 위해 저장을 하도록 하자.
