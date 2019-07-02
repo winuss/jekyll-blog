@@ -675,3 +675,11 @@ clean_test_df.to_csv(DATA_IN_PATH + TEST_CLEAN_DATA, index = False)
 ```
 
 test 데이터를 전처리할 떄 한 가지 중요한 점은 토크나이저를 통해 인덱스 벡터로 만들 때 토크나이징 객체로 새롭게 만드는 것이 아니라, 기존에 학습 데이터에 적용한 토크나이저 객체를 사용해야 한다는 것이다. 만약 새롭게 만들 경우 Train 데이터와 Test 데이터에 대한 각 단어들의 인덱스가 달라져서 모델에 정상적으로 적용할 수 없기 때문이다.
+
+지금까지의 결과를 아래와 같은 파일들에 각각 저장을 하였다.
+
+>단어 인덱스 사전 및 개수 : data_configs.json<br/>
+>훈련 데이터 : train_input.npy, train_label.npy, train_clean.csv<br/>
+>테스트 데이터 : test_input.npy, test_clean.csv, test_id.npy
+
+이제 저장된 데이터를 이용해 다음 스탭을 진행하도록 하겠다.
