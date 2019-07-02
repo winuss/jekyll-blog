@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: '[NLP] 텍스트 분류 (실습)'
+title: '[NLP] 텍스트 분류 (실습) - #1'
 categories: [bigdata]
 tags: [ml]
 date: 2019-06-18
