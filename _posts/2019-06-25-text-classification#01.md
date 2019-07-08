@@ -1,13 +1,15 @@
 ---
 layout: post
 comments: true
-title: '[NLP] 텍스트 분류 (실습) - #1'
+title: '[NLP] 텍스트 분류 (전처리) - #1'
 categories: [bigdata]
 tags: [ml]
-date: 2019-06-18
+date: 2019-06-25
 ---
 
 캐글(Kaggle)의 "Bag of Words meets bag of popcorns"
+
+(https://www.kaggle.com/c/word2vec-nlp-tutorial)
 
 ### 워드팝콘 데이터의 처리 과정
 
