@@ -151,6 +151,10 @@ class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
                'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
 ```
 
+그럼 불러온 fashion_mnist 데이터를 살펴본 결과를 그림으로 확인해 보죠.
+
+![mnist](/assets/img/post/tensorflow-basic/load-data.png)
+
 ### 데이터 전처리
 
 모델에 데이터를 학습시키기 위해 먼저 데이터 전처리를 진행해 보겠습니다.
