@@ -4,7 +4,7 @@ comments: true
 title: '[TF] 텍스트 분류'
 categories: [bigdata]
 tags: [ml]
-date: 2019-07-21
+date: 2019-08-07
 ---
 
 지난번에 TF-IDF 및 Word2Vec을 이용해 텍스트를 분류해 보았다. 이번에는 텐서플로를 이용하여 텍스트를 분류 해보자.
